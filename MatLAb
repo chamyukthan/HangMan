@@ -1,0 +1,66 @@
+clc; clear;
+
+dash = '\';
+
+fprintf('\n**********HANGMAN**********\n')
+
+fprintf('  ---------|   \n')
+fprintf('  |        0   \n')
+fprintf('  |       /|%s \n', dash)
+fprintf('  |       / %s \n', dash)
+fprintf('  |  By: Jack Glassmire, Deven Deickert, Sydney Schryer, \n')
+fprintf('__|__          and Chamyukthan SampathKumar              \n')
+
+clear;
+%%
+words = {'all','bake','cat','death','ear','fear','garage','hallway'...
+    'inside','joker','kettle','lame','men','never','options'...
+    'pulse','quest','roles','streets','tailer','under','viral','wide'...
+    'xeon','yesterday','zoo','titanic','book','airplane','swimming'...
+    'pool','art','money','green','dripping','recieve','drugs'...
+    'scare','destiny','friends','tell','ride','clones','purple','hearts'...
+    'trapping','hand','face','fake','inbox','broken','hate','star'...
+    'rockstar','nascar','red','roses','spark','midnight','light'...
+    'dark','nobody','mother','body','she','sloppy','mainecoon'...
+    'depends','math',};
+
+num = rand(1,1); %picking a random number 
+num = 69*num;
+num = ceil(num);
+answer = words(num) % turning that number to a word from the list
+answer = char(answer); % breaking that word into characters
+
+
+len = length(answer); % finding the length of the word
+for k = 1 :len
+    un(k) = '*';
+end
+
+
+
+%%
+m = 1;
+d = 5;
+for m=1:6 % giving them five attempts
+    
+    fprintf('\nYou have %d attempts left', d)
+    ch = input(': ','s');
+    n = 0;
+    for i = 1 : len
+        if (ch == answer(i))
+            un(i) = ch;
+            n = n +1;
+        end
+    end
+    
+    if (n == 0) % wrong letter
+        fprintf('\nSorry, thats a wrong letter.\n')
+    else       % correct letter
+        fprintf('\nYes, thats a correct letter!\n')
+    end
+
+  d = d-1; 
+
+  
+end
+
